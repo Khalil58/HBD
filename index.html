@@ -20,7 +20,7 @@
       font-family: "Quicksand", sans-serif;
       color: #444;
       text-align: center;
-      overflow-y: auto; /* ✅ scrollable */
+      overflow-y: auto;
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -92,7 +92,6 @@
       to {opacity: 1; transform: scale(1);}
     }
 
-    /* Floating hearts */
     .heart {
       position: fixed;
       bottom: 0;
@@ -118,17 +117,15 @@
   </div>
 
   <script>
-    // Page 1 - "No thanks"
+    // Page 1
     function noAnswer() {
       const content = document.getElementById('content');
       content.innerHTML = `
         <h1>Are you sure? 😢<br>You're going to like it!</h1>
         <button onclick="goBack()">↩️ Go back</button>
       `;
-      window.scrollTo(0, 0);
     }
 
-    // Page 1 - Go back
     function goBack() {
       const content = document.getElementById('content');
       content.innerHTML = `
@@ -136,7 +133,6 @@
         <button onclick="yesAnswer()">Yes please 💖</button>
         <button onclick="noAnswer()">No thanks 😅</button>
       `;
-      window.scrollTo(0, 0);
     }
 
     // Page 2 - Flower
@@ -147,8 +143,8 @@
         <img src="bouquet.jpg" alt="Bouquet of pink flowers" />
         <p>They describe pink tulips as pretty, cute, beautiful and wonderful to look at, but for me every single word describes the girl I love the most.<br>My own amazing Tulip🫵🏽🌷</p>
         <button onclick="showCake()">Next 🍰</button>
+        <button onclick="goBack()">↩️ Go Back</button>
       `;
-      window.scrollTo(0, 0);
     }
 
     // Page 3 - Cake
@@ -160,8 +156,8 @@
         <img src="cake.jpg" alt="Chocolate cake with strawberries" />
         <p>Because you bring all the sweetness in the world to my life. Sometimes all I want to do is eat you and taste the sweet strawberry you hide under your skin, because I'm pretty sure you are not human like the rest of us — you are an angelic candy in disguise 💕</p>
         <button onclick="showFinal()">Next 💌</button>
+        <button onclick="yesAnswer()">↩️ Go Back</button>
       `;
-      window.scrollTo(0, 0);
     }
 
     // Page 4 - Song
@@ -181,18 +177,17 @@
         </a>
         <br><br>
         <button onclick="showMessage()">💌 Read My Message 💖</button>
+        <button onclick="showCake()">↩️ Go Back</button>
       `;
-      window.scrollTo(0, 0);
     }
 
-    // Page 5 - Final Birthday Message
+    // Page 5 - Final Message
     function showMessage() {
       const content = document.getElementById('content');
       content.innerHTML = `
         <h1>💌 HAPPY BIRTHDAY TO MY PRINCESS 💌</h1>
         <div id="message"></div>
       `;
-      window.scrollTo(0, 0);
 
       const lines = [
         "Happy Birthday to my beautiful princess wishing you all the happiness in this world because you deserve it hoping it’s gonna be a great year for you.",
@@ -204,8 +199,8 @@
       ];
 
       const messageDiv = document.getElementById("message");
-
       let i = 0;
+
       function showNextLine() {
         if (i < lines.length) {
           const line = document.createElement("p");
@@ -214,22 +209,29 @@
           line.style.transition = "opacity 2.5s ease";
           line.style.fontSize = "1.1em";
           line.style.margin = "10px 0";
-          if (lines[i].match(/[\u0600-\u06FF]/)) { // Arabic detection
-            line.style.direction = "rtl";
-          }
+          if (lines[i].match(/[\u0600-\u06FF]/)) line.style.direction = "rtl";
           messageDiv.appendChild(line);
           setTimeout(() => { line.style.opacity = "1"; }, 100);
           i++;
           setTimeout(showNextLine, 3000);
         } else {
           createHearts();
+          showBackButton(); // ✅ Only show go-back button after message finishes
         }
+      }
+
+      function showBackButton() {
+        const btn = document.createElement("button");
+        btn.textContent = "↩️ Go Back";
+        btn.onclick = showFinal;
+        btn.style.marginTop = "20px";
+        messageDiv.appendChild(btn);
       }
 
       showNextLine();
     }
 
-    // Floating Hearts
+    // Floating hearts
     function createHearts() {
       for (let i = 0; i < 12; i++) {
         const heart = document.createElement("div");
