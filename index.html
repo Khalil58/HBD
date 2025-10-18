@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Princess 💖</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ffe6f0, #fff0f5);
+      font-family: "Quicksand", sans-serif;
+      color: #444;
+      text-align: center;
+      overflow-y: auto; /* ✅ scrollable */
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .container {
+      background: #fffafc;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 450px;
+      padding: 40px;
+      margin: 40px 0;
+      transition: all 0.6s ease;
+      animation: fadeIn 1s ease-in;
+      z-index: 2;
+      position: relative;
+      word-wrap: break-word;
+    }
+
+    h1 {
+      font-size: 1.8em;
+      color: #ff7aa2;
+    }
+
+    p {
+      font-size: 1.1em;
+      line-height: 1.5;
+      color: #555;
+    }
+
+    button {
+      background: #ffcce0;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 25px;
+      font-size: 1em;
+      margin: 10px;
+      cursor: pointer;
+      color: #fff;
+      transition: all 0.3s ease;
+      display: block;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    button:hover {
+      background: #ff99c2;
+      transform: scale(1.05);
+    }
+
+    img {
+      width: 250px;
+      height: auto;
+      margin: 20px 0;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.95);}
+      to {opacity: 1; transform: scale(1);}
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: 0;
+      color: #ff8fb1;
+      font-size: 20px;
+      animation: floatUp 6s ease-in infinite;
+      opacity: 0.8;
+      z-index: 1;
+    }
+
+    @keyframes floatUp {
+      0% {transform: translateY(0) scale(1); opacity: 1;}
+      100% {transform: translateY(-700px) scale(0.8); opacity: 0;}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" id="content">
+    <h1>Are you ready for your birthday present? 🎁</h1>
+    <button onclick="yesAnswer()">Yes please 💖</button>
+    <button onclick="noAnswer()">No thanks 😅</button>
+  </div>
+
+  <script>
+    // Page 1 - "No thanks"
+    function noAnswer() {
+      const content = document.getElementById('content');
+      content.innerHTML = `
+        <h1>Are you sure? 😢<br>You're going to like it!</h1>
+        <button onclick="goBack()">↩️ Go back</button>
+      `;
+      window.scrollTo(0, 0);
+    }
+
+    // Page 1 - Go back
+    function goBack() {
+      const content = document.getElementById('content');
+      content.innerHTML = `
+        <h1>Are you ready for your birthday present? 🎁</h1>
+        <button onclick="yesAnswer()">Yes please 💖</button>
+        <button onclick="noAnswer()">No thanks 😅</button>
+      `;
+      window.scrollTo(0, 0);
+    }
+
+    // Page 2 - Flower
+    function yesAnswer() {
+      const content = document.getElementById('content');
+      content.innerHTML = `
+        <h1>🌸 For my Favorite Bunny🐇 🌸</h1>
+        <img src="bouquet.jpg" alt="Bouquet of pink flowers" />
+        <p>They describe pink tulips as pretty, cute, beautiful and wonderful to look at, but for me every single word describes the girl I love the most.<br>My own amazing Tulip🫵🏽🌷</p>
+        <button onclick="showCake()">Next 🍰</button>
+      `;
+      window.scrollTo(0, 0);
+    }
+
+    // Page 3 - Cake
+    function showCake() {
+      const content = document.getElementById('content');
+      content.innerHTML = `
+        <h1>🎂 A sweet treat for you 🎂</h1>
+        <small>(When you see this, blow on the candles and make a wish 🎂✨)</small>
+        <img src="cake.jpg" alt="Chocolate cake with strawberries" />
+        <p>Because you bring all the sweetness in the world to my life. Sometimes all I want to do is eat you and taste the sweet strawberry you hide under your skin, because I'm pretty sure you are not human like the rest of us — you are an angelic candy in disguise 💕</p>
+        <button onclick="showFinal()">Next 💌</button>
+      `;
+      window.scrollTo(0, 0);
+    }
+
+    // Page 4 - Song
+    function showFinal() {
+      const content = document.getElementById('content');
+      content.innerHTML = `
+        <h1>Because you are my treasure💙</h1>
+        <p>This is one of my favorite songs since I was a kid, but I grew up to like the way you sound and talk to me with your gentle voice which is now my favorite song🥰❤️<br>
+        I’m so lucky to have you. I love you endlessly 🐰💞</p>
+        <iframe style="border-radius:12px;margin-top:15px;" 
+          src="https://open.spotify.com/embed/track/4G2Hbfwvn3oH7LxxPXjjGn"
+          width="300" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+        <br>
+        <a href="https://open.spotify.com/track/4G2Hbfwvn3oH7LxxPXjjGn" target="_blank"
+          style="display:inline-block;margin-top:10px;background:#1DB954;color:white;padding:10px 20px;border-radius:20px;text-decoration:none;font-weight:bold;">
+          🎧 Open in Spotify
+        </a>
+        <br><br>
+        <button onclick="showMessage()">💌 Read My Message 💖</button>
+      `;
+      window.scrollTo(0, 0);
+    }
+
+    // Page 5 - Final Birthday Message
+    function showMessage() {
+      const content = document.getElementById('content');
+      content.innerHTML = `
+        <h1>💌 HAPPY BIRTHDAY TO MY PRINCESS 💌</h1>
+        <div id="message"></div>
+      `;
+      window.scrollTo(0, 0);
+
+      const lines = [
+        "Happy Birthday to my beautiful princess wishing you all the happiness in this world because you deserve it hoping it’s gonna be a great year for you.",
+        "Wanna tell you how much I love you and how you mean the world to me you’re my everything, so happy to have someone like you in my life.",
+        "Can’t describe how happy you make me feel just by being there for me, by yapping all over my head, by making me smile whenever I’m around you and by looking delicious and gorgeous like a fine ass meal 🥘😋",
+        "So proud to knowing a person this pretty for those 2 years but it feels like it’s been a lifetime to the level that I can’t imagine what is my life without you being in it, so proud of how smart you are and so proud of what you’ve become. I’m very proud of everything you do; you make me feel like a proud father watching his daughter grow. I’ve known you since you were 21, now you’re turning big 24 but you will always be my little baby girl.",
+        "Love you to the moon and back. Happy Birthday 🎈🥳🎂",
+        "كل عام وانتي لي يا قمري💙"
+      ];
+
+      const messageDiv = document.getElementById("message");
+
+      let i = 0;
+      function showNextLine() {
+        if (i < lines.length) {
+          const line = document.createElement("p");
+          line.textContent = lines[i];
+          line.style.opacity = "0";
+          line.style.transition = "opacity 2.5s ease";
+          line.style.fontSize = "1.1em";
+          line.style.margin = "10px 0";
+          if (lines[i].match(/[\u0600-\u06FF]/)) { // Arabic detection
+            line.style.direction = "rtl";
+          }
+          messageDiv.appendChild(line);
+          setTimeout(() => { line.style.opacity = "1"; }, 100);
+          i++;
+          setTimeout(showNextLine, 3000);
+        } else {
+          createHearts();
+        }
+      }
+
+      showNextLine();
+    }
+
+    // Floating Hearts
+    function createHearts() {
+      for (let i = 0; i < 12; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = 5 + Math.random() * 3 + "s";
+        heart.style.fontSize = 16 + Math.random() * 10 + "px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 8000);
+      }
+      setTimeout(createHearts, 4000);
+    }
+  </script>
+</body>
+</html>
